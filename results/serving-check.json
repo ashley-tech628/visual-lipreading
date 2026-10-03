@@ -1,0 +1,36 @@
+{
+  "health": "ready",
+  "http_matches_direct": true,
+  "malformed_input_status": 400,
+  "cross_origin_status": 403,
+  "prediction": {
+    "prediction": "sao miao",
+    "top3": [
+      {
+        "label": "sao miao",
+        "probability": 0.4347677528858185
+      },
+      {
+        "label": "pi",
+        "probability": 0.32053881883621216
+      },
+      {
+        "label": "tiao",
+        "probability": 0.1644715517759323
+      }
+    ],
+    "low_confidence": true,
+    "threshold": 0.5,
+    "frames_used": 7,
+    "temporal_weights": [
+      0.2238246649503708,
+      0.2901115417480469,
+      0.22540469467639923,
+      0.10979799926280975,
+      0.0566985197365284,
+      0.04016214236617088,
+      0.05400039255619049
+    ],
+    "note": "Closed-set probabilities over the training vocabulary; not an out-of-distribution detector. Temporal weights are not causal explanations."
+  }
+}

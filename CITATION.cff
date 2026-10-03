@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Please cite the Bachelor thesis when discussing the research and this repository when using its software."
+type: software
+title: "Visual Lipreading: Dense 3D and LipNet Feature Fusion"
+version: 1.0.0
+date-released: 2026-10-02
+authors:
+  - family-names: Liu
+    given-names: Xinying
+preferred-citation:
+  type: thesis
+  title: "A Multimodal Lip Recognition Approach Based on Vision and Deep Learning"
+  authors:
+    - family-names: Liu
+      given-names: Xinying
+  year: 2024
+  institution:
+    name: "Lancaster University College at Beijing Jiaotong University"

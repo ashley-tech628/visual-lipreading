@@ -1,0 +1,20 @@
+{
+  "tests_passed": 25,
+  "real_training_runs": 10,
+  "epochs_per_run": 12,
+  "accepted_train": 617,
+  "accepted_validation": 194,
+  "accepted_test": 90,
+  "classes": 6,
+  "full_preset_parameters": 10099513,
+  "full_preset_forward_shape": [
+    1,
+    1000
+  ],
+  "full_preset_training_executed": false,
+  "http_matches_cli": true,
+  "browser_video_decode_to_prediction": true,
+  "browser_mouth_frames_to_prediction": true,
+  "browser_mouth_prediction_matches_http": true,
+  "source_paper_validation_recognition_percent": 46.73446
+}

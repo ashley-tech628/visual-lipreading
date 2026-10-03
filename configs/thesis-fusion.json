@@ -1,0 +1,15 @@
+{
+  "classes": 1000,
+  "input_channels": 1,
+  "initial_features": 64,
+  "growth": 32,
+  "block_layers": [4, 8, 12, 8],
+  "lip_channels": [64, 128, 256],
+  "fusion_features": 256,
+  "hidden": 64,
+  "recurrent_layers": 2,
+  "dropout": 0.2,
+  "architecture": "fusion",
+  "recurrent": "gru",
+  "pooling": "attention"
+}
