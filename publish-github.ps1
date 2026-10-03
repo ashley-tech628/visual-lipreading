@@ -21,14 +21,30 @@ if ($LASTEXITCODE -eq 1) {
     & git -c "safe.directory=$projectRoot" commit -m 'Add visual lipreading research, fusion models and reproducible pipeline'
     if ($LASTEXITCODE -ne 0) { throw 'Commit failed. Check your Git user.name and user.email.' }
 }
-& gh repo view $Repository --json nameWithOwner 2>$null
-if ($LASTEXITCODE -ne 0) {
+# A missing repository is an expected probe result. Windows PowerShell can
+# promote native stderr to a terminating error even when it is redirected.
+$savedErrorPreference = $ErrorActionPreference
+try {
+    $ErrorActionPreference = 'Continue'
+    & gh repo view $Repository --json nameWithOwner 2>$null
+    $repositoryExists = ($LASTEXITCODE -eq 0)
+} finally {
+    $ErrorActionPreference = $savedErrorPreference
+}
+if (-not $repositoryExists) {
     & gh repo create $Repository "--$Visibility" --source $projectRoot --remote origin
     if ($LASTEXITCODE -ne 0) { throw 'Repository creation failed.' }
 } else {
-    $origin = & git -c "safe.directory=$projectRoot" remote get-url origin 2>$null
-    if ($LASTEXITCODE -ne 0) {
+    try {
+        $ErrorActionPreference = 'Continue'
+        $origin = & git -c "safe.directory=$projectRoot" remote get-url origin 2>$null
+        $originExists = ($LASTEXITCODE -eq 0)
+    } finally {
+        $ErrorActionPreference = $savedErrorPreference
+    }
+    if (-not $originExists) {
         & git -c "safe.directory=$projectRoot" remote add origin "https://github.com/$Repository.git"
+        if ($LASTEXITCODE -ne 0) { throw 'Adding the origin remote failed.' }
     } elseif ($origin -notmatch [regex]::Escape($Repository)) {
         throw "Existing origin is different: $origin. Review it before pushing."
     }
